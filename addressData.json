@@ -1,0 +1,8 @@
+{
+  "name" : "Teste Nome do Endereco",
+  "zipCode" : "59150400",
+  "recipientName" : "Teste Destinatario" ,
+  "streetNumber" : "1234",
+  "additionalInfo" : "Teste Complemento",
+  "reference" : "Teste Referencia"
+}
