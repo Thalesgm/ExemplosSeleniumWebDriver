@@ -4,8 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +39,17 @@ public class TesteCadastrarUsuario {
     public void testCadastrarUsuarioPF(){
         driver.findElement(By.id("sign-up-username")).sendKeys("testecadastrarpf@teste.com");
         driver.findElement(By.id("verify-email-button")).click();
+        driver.findElement(By.id("person-name")).sendKeys("Nome");
+        driver.findElement(By.id("person-last-name")).sendKeys("Sobrenome");
+
+        //Alternando entre os generos
+        driver.findElement(By.id("label-female")).click();
+        driver.findElement(By.id("label-male")).click();
+        driver.findElement(By.id("label-female")).click();
+
+        //Data de Nascimento
+        WebElement day = driver.findElement(By.id("dateofbirth-day"));
+        new Select(day).selectByVisibleText("25");
     }
 
     @Test
