@@ -15,13 +15,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class TesteCadastrarEndereco{
     private WebDriver driver;
 
-    //LEMBRAR QUE NO WINDOWS A BARRA É PARA O LADO OPOSTO. E EM JAVA PRECISAMOS
-    //COLOCAR DUAS BARRAS NO LUGAR DE UMA - EX: C:\\TESTES2
     private String driverPath = "chromedriver.exe";
     private String baseUrl;
     private  boolean acceptNextAlert = true;
 
-    //Criando Login
+    //Realizando Autenticação
     private StringBuffer verificationErrors = new StringBuffer();
     private JSONParser jsonParser = new JSONParser();
     private FileReader reader = new FileReader("user.json");
