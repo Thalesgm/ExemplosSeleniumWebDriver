@@ -22,7 +22,7 @@ public class TesteCadastrarEndereco{
     //Realizando Autenticação
     private StringBuffer verificationErrors = new StringBuffer();
     private JSONParser jsonParser = new JSONParser();
-    private FileReader reader = new FileReader("user.json");
+    private FileReader reader = new FileReader("loginCredentials.json");
     Object obj = jsonParser.parse(reader);
     JSONObject user = (JSONObject) obj;
     public TesteCadastrarEndereco() throws IOException, ParseException {
