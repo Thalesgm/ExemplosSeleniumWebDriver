@@ -1,0 +1,16 @@
+{
+  "email" : "ssamuelthomasramos@panevale.com.br",
+  "cpf" : "18834656563",
+  "name" : "Samuel Thomas",
+  "lastName" : "Ramos",
+  "dateofbirth-day" : "07",
+  "dateofbirth-month" :"Set",
+  "dateofbirth-year" : "1973",
+  "address-zipcode": "70070-710",
+  "address-number": "302",
+  "address-additional-info" : "Complemento Teste",
+  "address-reference": "Referencia Teste",
+  "phones-home" : "6137571667",
+  "phones-mobile" : "61982046272",
+  "password" : "Senhaaqui123@"
+}
