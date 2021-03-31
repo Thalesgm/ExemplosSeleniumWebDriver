@@ -50,6 +50,23 @@ public class TesteCadastrarUsuario {
         //Data de Nascimento
         WebElement day = driver.findElement(By.id("dateofbirth-day"));
         new Select(day).selectByVisibleText("25");
+        WebElement month = driver.findElement(By.id("dateofbirth-month"));
+        new Select(month).selectByVisibleText("Jan");
+        WebElement year = driver.findElement(By.id("dateofbirth-year"));
+        new Select(year).selectByVisibleText("2015");
+
+        driver.findElement(By.id("cpf")).sendKeys("80644208570");
+
+        //Dados Referentes ao Endereço
+        driver.findElement(By.id("address-zipcode")).sendKeys("59150-200");
+        driver.findElement(By.id("address-number")).sendKeys("123ABC");
+        driver.findElement(By.id("address-additional-info")).sendKeys("Informação Adicional Complemento");
+        driver.findElement(By.id("reference")).sendKeys("Referencia");
+        driver.findElement(By.id("phones-home")).sendKeys("84123456789");
+        driver.findElement(By.id("phones-mobile")).sendKeys("84987654321");
+        driver.findElement(By.id("password")).sendKeys("Aa123@123");
+        driver.findElement(By.id("check-sms")).click();
+        //driver.findElement(By.id("save-register-natural"))/click();
     }
 
     @Test
