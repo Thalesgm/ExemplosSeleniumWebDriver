@@ -69,19 +69,50 @@ public class TesteCadastrarUsuario {
         driver.findElement(By.id("address-zipcode")).sendKeys((CharSequence) userPF.get("address-zipcode"));
         driver.findElement(By.id("address-number")).sendKeys((CharSequence) userPF.get("address-number"));
         driver.findElement(By.id("address-additional-info")).sendKeys((CharSequence) userPF.get("address-additional-info"));
-        driver.findElement(By.id("reference")).sendKeys((CharSequence) userPF.get("address-reference"));
+        driver.findElement(By.id("reference")).sendKeys((CharSequence) userPF.get("reference"));
         driver.findElement(By.id("phones-home")).sendKeys((CharSequence) userPF.get("phones-home"));
         driver.findElement(By.id("phones-mobile")).sendKeys((CharSequence) userPF.get("phones-mobile"));
         driver.findElement(By.id("password")).sendKeys((CharSequence) userPF.get("password"));
         driver.findElement(By.id("check-sms")).click();
-        //driver.findElement(By.id("save-register-natural"))/click();
+        //driver.findElement(By.id("save-register-natural")).click();
     }
 
     @Test
-    public void testCadastrarUsuarioPJ(){
-        driver.findElement(By.id("sign-up-username")).sendKeys("testecadastrarpj@teste.com");
+    public void testCadastrarUsuarioPJ() throws IOException, ParseException {
+        FileReader reader = new FileReader("userPJ.json");
+        Object obj = jsonParser.parse(reader);
+        JSONObject userPJ = (JSONObject) obj;
+        //Acessando o Cadastro
+        driver.findElement(By.id("sign-up-username")).sendKeys((CharSequence) userPJ.get("email"));
         driver.findElement(By.id("verify-email-button")).click();
+
+        //Alterando para a aba de Pessoa Juridica
         driver.findElement(By.id("legal-tab")).click();
+
+        //Inserindo Dados da empresa
+        driver.findElement(By.id("person-company-name")).sendKeys((CharSequence) userPJ.get("name"));
+        driver.findElement(By.id("person-trading-name")).sendKeys((CharSequence) userPJ.get("trading-name"));
+        driver.findElement(By.id("person-cnpj")).sendKeys((CharSequence) userPJ.get("cnpj"));
+        driver.findElement(By.id("person-municipal-inscription")).sendKeys((CharSequence) userPJ.get("municipal-inscription"));
+        driver.findElement(By.id("person-state-inscription")).sendKeys((CharSequence) userPJ.get("state-inscription"));
+        driver.findElement(By.id("exempt")).click();
+        driver.findElement(By.id("address-zipcode")).sendKeys((CharSequence) userPJ.get("address-zipcode"));
+        WebElement tipoRua = driver.findElement(By.id("address-street-type"));
+        new Select(tipoRua).selectByVisibleText((String) userPJ.get("address-street-type"));
+        driver.findElement(By.id("address-name")).sendKeys((CharSequence) userPJ.get("address-name"));
+        driver.findElement(By.id("address-number")).sendKeys((CharSequence) userPJ.get("address-number"));
+        driver.findElement(By.id("neighborhood")).sendKeys((CharSequence) userPJ.get("neighborhood"));
+        driver.findElement(By.id("address-additional-info")).sendKeys((CharSequence) userPJ.get("address-additional-info"));
+        WebElement estado = driver.findElement(By.id("address-state"));
+        new Select(estado).selectByVisibleText((String) userPJ.get("address-state"));
+        driver.findElement(By.id("city")).sendKeys((CharSequence) userPJ.get("city"));
+        driver.findElement(By.id("reference")).sendKeys((CharSequence) userPJ.get("reference"));
+        driver.findElement(By.id("phones-home")).sendKeys((CharSequence) userPJ.get("phones-home"));
+        driver.findElement(By.id("phones-mobile")).sendKeys((CharSequence) userPJ.get("phones-mobile"));
+        driver.findElement(By.id("password")).sendKeys((CharSequence) userPJ.get("password"));
+        driver.findElement(By.id("check-sms")).click();
+        //driver.findElement(By.id("save-register-natural")).click();
+
     }
 
     @After
