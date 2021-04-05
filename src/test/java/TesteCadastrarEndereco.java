@@ -49,6 +49,15 @@ public class TesteCadastrarEndereco{
         driver.findElement(By.id("login-button")).click();
     }
 
+    @After
+    public void tearDown() throws Exception {
+        //driver.quit();
+        String verificationErrorString = verificationErrors.toString();
+        if (!"".equals(verificationErrorString)) {
+            fail(verificationErrorString);
+        }
+    }
+
     @Test
     public void testCadastrarEndereco() throws Exception {
         reader = new FileReader("addressData.json");
@@ -63,18 +72,15 @@ public class TesteCadastrarEndereco{
         driver.findElement(By.id("streetNumber")).sendKeys((CharSequence) addressData.get("streetNumber"));
         driver.findElement(By.id("additionalInfo")).sendKeys((CharSequence) addressData.get("additionalInfo"));
         driver.findElement(By.id("reference")).sendKeys((CharSequence) addressData.get("reference"));
+        String actual = driver.findElement(By.id("streetName")).getAttribute("value");
+
         //driver.findElement(By.xpath("//button[contains(text(),'Salvar Informações')]")).click();
 
+        assertEquals(addressData.get("streetName"), actual);
+
     }
 
-    @After
-    public void tearDown() throws Exception {
-        //driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
-    }
+
 
 
 }

@@ -1,6 +1,7 @@
 {
   "name" : "Teste Nome do Endereco",
   "zipCode" : "59150400",
+  "streetName": "Rua Canguaretama",
   "recipientName" : "Teste Destinatario" ,
   "streetNumber" : "1234",
   "additionalInfo" : "Teste Complemento",

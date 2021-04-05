@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class TesteCadastrarUsuario {
@@ -38,6 +39,15 @@ public class TesteCadastrarUsuario {
         baseUrl = "https://www.netshoes.com.br/login";
         driver.manage().timeouts().implicitlyWait(25, TimeUnit.SECONDS);
         driver.get(baseUrl);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        //driver.quit();
+        String verificationErrorString = verificationErrors.toString();
+        if (!"".equals(verificationErrorString)) {
+            fail(verificationErrorString);
+        }
     }
 
     @Test
@@ -75,6 +85,9 @@ public class TesteCadastrarUsuario {
         driver.findElement(By.id("password")).sendKeys((CharSequence) userPF.get("password"));
         driver.findElement(By.id("check-sms")).click();
         //driver.findElement(By.id("save-register-natural")).click();
+
+        String actual = driver.findElement(By.id("email")).getAttribute("value");
+        assertEquals(userPF.get("email"), actual);
     }
 
     @Test
@@ -111,16 +124,12 @@ public class TesteCadastrarUsuario {
         driver.findElement(By.id("phones-mobile")).sendKeys((CharSequence) userPJ.get("phones-mobile"));
         driver.findElement(By.id("password")).sendKeys((CharSequence) userPJ.get("password"));
         driver.findElement(By.id("check-sms")).click();
+
         //driver.findElement(By.id("save-register-natural")).click();
 
+        String actual = driver.findElement(By.id("email")).getAttribute("value");
+        assertEquals(userPJ.get("email"), actual);
     }
 
-    @After
-    public void tearDown() throws Exception {
-        //driver.quit();
-        String verificationErrorString = verificationErrors.toString();
-        if (!"".equals(verificationErrorString)) {
-            fail(verificationErrorString);
-        }
-    }
+
 }
